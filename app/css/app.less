@@ -1,0 +1,17 @@
+//remember to use mixins, if selectors are not available directly from bootstrap.less
+// notice: classes like ".hidden-..." are not accessible via less from css distribution
+@import (reference) "../bower_components/bootstrap/less/bootstrap.less";
+
+
+// All elements padding to not increase box size!
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// to use as mixins:
+.app-button-text-big {
+  font-size: 28px;
+  color: black;
+}

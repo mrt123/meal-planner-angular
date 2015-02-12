@@ -12,5 +12,8 @@ bower_components/
 target/
 servers/
 
+#compiled during development
+app/css/*.css
+
 #macOS
 .DS_Store

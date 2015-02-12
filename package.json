@@ -1,0 +1,9 @@
+{
+  "name": "meal-planner-angular",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "less": "used for dev real-time compilation",
+    "less": "^2.4.0"
+  }
+}
