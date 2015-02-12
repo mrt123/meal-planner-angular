@@ -15,3 +15,147 @@
   font-size: 28px;
   color: black;
 }
+
+//  DEFAULTS-START
+a:hover {
+  text-decoration: none;
+}
+
+
+body {
+  padding-top: 50px;  // accommodate sticky navbar!
+}
+
+h1, h2, h3 {
+  .hidden-xs;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+hr {
+  width: 100%;
+}
+
+button {   // buttons for exclusive use with bootstrap glyphicons
+  border: 0;
+  background: 0;
+  vertical-align: middle;
+}
+//  DEFAULTS-END
+
+
+//  NAVBAR-START
+// less would not apply 'navbar-brand' correctly unless nested as below:
+.mp-navbar .header-logo-pc {
+  .navbar-brand;
+  .hidden-xs;
+  color: #9d9d9d;
+}
+
+.mp-navbar .header-logo-mobile {
+  .navbar-brand;
+  .visible-xs;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50px;
+  width: 50px;
+  padding: 11px 11px;
+
+  color: #9d9d9d;
+  font-size: 27px;
+}
+
+.mp-navbar {
+  .navbar;
+  .navbar-inverse;
+  .navbar-fixed-top;
+
+  .container {
+    .navbar-header {
+
+      height: 50px;
+
+      .header-breadcrumb {
+
+        // workaround for "visible-xs changes inline into block"
+        .hidden-sm;
+        .hidden-md;
+        .hidden-lg;
+
+
+        height: 30px;
+        margin: 13px 60px;
+        overflow: hidden;
+
+        color: #9d9d9d;
+        text-align: center;
+        font-size: 15px;
+      }
+
+      .navbar-toggle {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 70px;
+        height: 20px;
+        background-color: #b0e0e6;
+      }
+    }
+
+    #navbar {
+      .collapse;
+      .navbar-collapse;
+    }
+  }
+}
+//  NAVBAR-END
+
+// MAIN-START
+.main {
+  .container; // width of container imposed by bootstrap, not optimal for table views ..
+  // check: http://getbootstrap.com/css/#grid-options
+
+  padding-right: 0px;
+  padding-left: 0px;
+
+  #column-left {
+    .hidden-md; // or smaller implied?
+    .make-lg-column(3);
+  }
+
+  .outlet {
+    .make-md-column(12); // or smaller implied?
+    .make-lg-column(6);
+
+    padding: 0px 0px;
+    text-align: center;
+  }
+
+  .column-right {
+    .hidden-md; // or smaller implied?
+    .make-lg-column(3); // or bigger implied?
+  }
+}
+// MAIN-END
+
+footer {
+  .container;
+  .hidden-xs;
+
+  // first-child does not seem to work properly with less!
+  p:first-of-type{
+    .pull-left;
+  }
+
+  p:nth-of-type(2) {
+    .pull-right;
+  }
+}
