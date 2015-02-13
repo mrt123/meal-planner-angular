@@ -9,6 +9,9 @@
 
 
         <!--foods-table-->
+        <div tt-food-table></div>
+
+
         <!--foods-summary-->
         <!--{{ action "goToSearch"}}-->
         <button><span><i class="fa fa-plus-circle"></i> Add Food</span></button>
@@ -18,5 +21,15 @@
         <!--foods-summary-->
     </div>
     <!--outlet for search template-->
+
+
+    <!--{{#if visible}}-->
+    <!--{{foods-table foods=foods actionIconAction="removeFood" iconName="fa fa-trash-o"}}-->
+    <!--{{foods-summary-table foods=foods clickAction="goToMeal"}}-->
+    <!--<button {{ action "goToSearch"}}><span><i class="fa fa-plus-circle"></i> Add Food</span></button>-->
+    <!--{{else}}-->
+    <!--{{foods-summary-table foods=foods clickAction="goToMeal"}}-->
+    <!--{{/if}}-->
+    <!--{{outlet}} &lt;!&ndash; for search template &ndash;&gt;-->
 
 </div>

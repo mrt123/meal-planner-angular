@@ -1,6 +1,12 @@
-console.log("app");
-
-var app = angular.module('app', ['ngRoute', 'app.meals', 'app.meal']);
+var app = angular.module('app', [
+    'ngRoute',
+    'app.meals',
+    'app.meal',
+    'tt-food-table'
+], function(){
+    //angular.module('tt-food-table').constant('templatePath', 123);
+    angular.module('tt-food-table').value('templatePath', 123);
+});
 
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -12,4 +18,3 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/'
         });
 }]);
-
