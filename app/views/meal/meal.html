@@ -1,0 +1,22 @@
+<div id="meal">
+    <!--h3 hidden on mobile-->
+    <h3>"{{mealId}}"   <!-- {{title}}-->
+        <small>Editing meal</small>
+    </h3>
+
+    <div ng-if="!hidden">
+        <small>test ID="{{mealId}}"</small>
+
+
+        <!--foods-table-->
+        <!--foods-summary-->
+        <!--{{ action "goToSearch"}}-->
+        <button><span><i class="fa fa-plus-circle"></i> Add Food</span></button>
+
+    </div>
+    <div ng-if="hidden">
+        <!--foods-summary-->
+    </div>
+    <!--outlet for search template-->
+
+</div>
