@@ -1,9 +1,17 @@
 {
   "name": "meal-planner-angular",
   "version": "0.0.1",
+  "private": true,
   "dependencies": {},
+  "scripts": {
+    "prestart": "npm install",
+    "postinstall": "bower install",
+    "start": "TODO:  start file watchers, start server, start lifeReload"
+  },
   "devDependencies": {
-    "less": "used for dev real-time compilation",
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
     "less": "^2.4.0"
   }
 }
