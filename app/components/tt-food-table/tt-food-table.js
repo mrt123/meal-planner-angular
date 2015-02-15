@@ -1,13 +1,18 @@
 var foodTableModule = angular.module('tt-food-table', ['ngRoute']);
 
-foodTableModule.constant('templatePath', 123);
-
+/**
+ * - make module aware of its location (must be assigned when script is first executed by browser!).
+ * - make sure template is located on the same path as script after build
+ */
+foodTableModule.scriptPath = [].slice.call(document.getElementsByTagName("script")).pop().getAttribute("src");
 
 // used as: "tt-food-table"
-foodTableModule.directive('ttFoodTable', ['templatePath', function (templatePath) {
+foodTableModule.directive('ttFoodTable', [ function () {
+debugger
     return {
-        templateUrl: templatePath
-        //templateUrl: './tt-food-table/tt-food-table.html'
+        //templateUrl: './components/tt-food-table/tt-food-table.html'
+        templateUrl: foodTableModule.scriptPath.replace('.js', '.html')
+
     };
 }]);
 
