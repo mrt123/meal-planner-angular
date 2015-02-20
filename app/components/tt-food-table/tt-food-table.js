@@ -5,12 +5,24 @@ var foodTableModule = angular.module('tt-food-table', ['ngRoute']);
  * - make sure template is located on the same path as script after build
  */
 foodTableModule.scriptPath = [].slice.call(document.getElementsByTagName("script")).pop().getAttribute("src");
-
+console.log('aaaa')
 // used as: "tt-food-table"
 foodTableModule.directive('ttFoodTable', [ function () {
-debugger
+
     return {
-        //templateUrl: './components/tt-food-table/tt-food-table.html'
+        restrict: 'E', //directive to be used as element only!
+        // isolated scope
+        scope: {
+            // @ one way
+            // = two way
+            // & create a delegate function
+            //for @var remember to use hyphen based notation on bound attributes.
+            saveIcon: '@'
+        },
+        link: function ($scope, element, attr) {
+            // show Angular how to evaluate bound attributes to boolean :/
+            $scope.saveIcon = $scope.$eval($scope.saveIcon);
+        },
         templateUrl: foodTableModule.scriptPath.replace('.js', '.html')
 
     };

@@ -1,1 +1,72 @@
 <div>TEMPLATE WORKING!</div>
+
+
+
+<div class="foods-table">
+    <table>
+        <colgroup>
+            <col class="icon"/>
+            <col class="name"/>
+            <col class="amount"/>
+            <col class="nutrient protein"/>
+            <col class="nutrient complex"/>
+            <col class="nutrient sugar"/>
+            <col class="nutrient o3"/>
+            <col class="nutrient o6"/>
+            <col class="nutrient mUnsaturated"/>
+            <col class="nutrient saturated"/>
+            <col class="nutrient calories"/>
+        </colgroup>
+
+        <tr class="headers">
+            <th>
+                <!-- action column-->
+                <button ng-if="saveIcon"><span><i class="fa fa-save fa-2x"></i></span></button>
+            </th>
+            <th>name</th>
+            <th>amount</th>
+            <th>protein</th>
+            <th>complex</th>
+            <th>sugar</th>
+            <th>o3</th>
+            <th>o6</th>
+            <th>mono unsaturated</th>
+            <th>saturated</th>
+            <th>calories</th>
+        </tr>
+        <!--{{#each food in foods}}-->
+        <!--<tr class="foodRow">-->
+            <!--<td>-->
+                <!--<button {{ action-->
+                <!--"actionIconClick" food}}>-->
+                <!--<span {{bind-attr class="iconName" }}></span>-->
+                <!--</button>-->
+            <!--</td>-->
+            <!--<td>{{food.name}}</td>-->
+            <!--<td>{{input class="amountSelector" value=food.amount type="number" maxlength="3" min="0" max="999"}}-->
+            <!--</td>-->
+            <!--<td>{{roundup food.protein}}</td>-->
+            <!--<td>{{roundup food.complex}}</td>-->
+            <!--<td>{{roundup food.sugar}}</td>-->
+            <!--<td>{{roundup food.o3}}</td>-->
+            <!--<td>{{roundup food.o6}}</td>-->
+            <!--<td>{{roundup food.monoUnsaturated}}</td>-->
+            <!--<td>{{roundup food.saturated}}</td>-->
+            <!--<td>{{roundup food.calories}}</td>-->
+        <!--</tr>-->
+        <!--{{/each}}-->
+        <!--<tr class="summary">-->
+            <!--<td></td>-->
+            <!--<td>Detailed Summary</td>-->
+            <!--<td></td>-->
+            <!--<td>{{proteinSum foods}}</td>-->
+            <!--<td>{{complexSum foods}}</td>-->
+            <!--<td>{{sugarSum foods}}</td>-->
+            <!--<td>{{o3Sum foods}}</td>-->
+            <!--<td>{{o6Sum foods}}</td>-->
+            <!--<td>{{monoSum foods}}</td>-->
+            <!--<td>{{saturatedSum foods}}</td>-->
+            <!--<td>{{calSum foods}}</td>-->
+        <!--</tr>-->
+    </table>
+</div>
