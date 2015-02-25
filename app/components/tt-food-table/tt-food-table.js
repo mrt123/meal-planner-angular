@@ -5,7 +5,7 @@ var foodTableModule = angular.module('tt-food-table', ['ngRoute']);
  * - make sure template is located on the same path as script after build
  */
 foodTableModule.scriptPath = [].slice.call(document.getElementsByTagName("script")).pop().getAttribute("src");
-console.log('aaaa')
+
 // used as: "tt-food-table"
 foodTableModule.directive('ttFoodTable', [ function () {
 
