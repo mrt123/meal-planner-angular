@@ -13,15 +13,15 @@ foodTableModule.directive('ttFoodTable', [ function () {
         restrict: 'E', //directive to be used as element only!
         // isolated scope
         scope: {
-            // @ one way
-            // = two way
+            // @ assign string representation (one way)
+            // = assign actual scope model (two way)
             // & create a delegate function
             //for @var remember to use hyphen based notation on bound attributes.
-            saveIcon: '@'
+            saveIcon: '=',
+            actionIconAction: '&',
+            foods: '='
         },
         link: function ($scope, element, attr) {
-            // show Angular how to evaluate bound attributes to boolean :/
-            $scope.saveIcon = $scope.$eval($scope.saveIcon);
         },
         templateUrl: foodTableModule.scriptPath.replace('.js', '.html')
 

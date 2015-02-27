@@ -35,30 +35,30 @@
             <th>calories</th>
         </tr>
         <!--{{#each food in foods}}-->
-        <!--<tr class="foodRow">-->
-            <!--<td>-->
+        <tr ng-repeat="food in foods" class="foodRow">
+            <td>
                 <!--<button {{ action-->
                 <!--"actionIconClick" food}}>-->
                 <!--<span {{bind-attr class="iconName" }}></span>-->
                 <!--</button>-->
-            <!--</td>-->
-            <!--<td>{{food.name}}</td>-->
+            </td>
+            <td>{{food.name}}</td>
             <!--<td>{{input class="amountSelector" value=food.amount type="number" maxlength="3" min="0" max="999"}}-->
             <!--</td>-->
-            <!--<td>{{roundup food.protein}}</td>-->
-            <!--<td>{{roundup food.complex}}</td>-->
-            <!--<td>{{roundup food.sugar}}</td>-->
-            <!--<td>{{roundup food.o3}}</td>-->
-            <!--<td>{{roundup food.o6}}</td>-->
-            <!--<td>{{roundup food.monoUnsaturated}}</td>-->
-            <!--<td>{{roundup food.saturated}}</td>-->
-            <!--<td>{{roundup food.calories}}</td>-->
-        <!--</tr>-->
+            <td>{{food.protein | number : 1}}</td>
+            <td>{{food.complex | number : 1}}</td>
+            <td>{{food.sugar | number : 1}}</td>
+            <td>{{food.o3 | number : 1}}</td>
+            <td>{{food.o6 | number : 1}}</td>
+            <td>{{food.monoUnsaturated | number : 1}}</td>
+            <td>{{food.saturated | number : 1}}</td>
+            <td>{{food.calories | number : 1}}</td>
+        </tr>
         <!--{{/each}}-->
-        <!--<tr class="summary">-->
-            <!--<td></td>-->
-            <!--<td>Detailed Summary</td>-->
-            <!--<td></td>-->
+        <tr class="summary">
+            <td></td>
+            <td>Detailed Summary</td>
+            <td></td>
             <!--<td>{{proteinSum foods}}</td>-->
             <!--<td>{{complexSum foods}}</td>-->
             <!--<td>{{sugarSum foods}}</td>-->
@@ -67,6 +67,6 @@
             <!--<td>{{monoSum foods}}</td>-->
             <!--<td>{{saturatedSum foods}}</td>-->
             <!--<td>{{calSum foods}}</td>-->
-        <!--</tr>-->
+        </tr>
     </table>
 </div>
