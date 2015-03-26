@@ -2,7 +2,8 @@ var app = angular.module('app', [
     'ngRoute',
     'app.meals',
     'app.meal',
-    'tt-food-table'
+    'tt-food-table',
+    'mealsDataService'
 ], function(){
     //angular.module('tt-food-table').constant('templatePath', 123);
     angular.module('tt-food-table').value('templatePath', 123);
