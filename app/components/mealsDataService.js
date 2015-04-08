@@ -5,6 +5,7 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
     // CONSTANTS
     var EMPTY_PROMISE = {data: []};
     var CACHE_DEFAULT = [];
+    var RESORUCE_URL = '../test/foods.json';
 
     var service = {
         cache: CACHE_DEFAULT,
@@ -14,10 +15,9 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
          * @returns {promise}
          */
         fetchData: function () {
-            if (!isPromiseInProgress()) {
-                service.promise = fetch();
-            }
-            return service.promise;
+            // TODO: find a way to OVERLOAD to serve both: QUERY & FetchAll
+            // TODO: use single function for API and 2 private functions inside
+            return httpGetWhenIdle();
         },
 
         /**
@@ -40,15 +40,34 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
         return service.promise.then !== undefined;
     }
 
-    /**
-     * @returns {HttpPromise}
-     */
-    function fetch() {
-        var promise = $http.get('../test/foods.json');
+    // TODO: use later for overloaded API
+    function httpQuery(params) {
+        var promise = $http.get(RESORUCE_URL,
+            {
+                params : params
+            });
         promise.then(function (resolved) {
             updateCache(resolved);
         });
         return promise;
+    }
+
+    /**
+     * @returns {HttpPromise}
+     */
+    function httpGet() {
+        var promise = $http.get(RESORUCE_URL);
+        promise.then(function (resolved) {
+            updateCache(resolved);
+        });
+        return promise;
+    }
+
+    function httpGetWhenIdle() {
+        if (!isPromiseInProgress()) {
+            service.promise = httpGet();
+        }
+        return service.promise;
     }
 
     function updateCache(resolvedPromise) {
