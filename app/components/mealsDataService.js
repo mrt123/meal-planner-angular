@@ -14,10 +14,22 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
         /**
          * @returns {promise}
          */
-        fetchData: function () {
-            // TODO: find a way to OVERLOAD to serve both: QUERY & FetchAll
-            // TODO: use single function for API and 2 private functions inside
-            return httpGetWhenIdle();
+        fetchData: function (query) {
+            var promise;
+
+            switch(query !== undefined) {
+                case true:
+                    promise = doWhenReadIsIdle(httpGetQuery(query));
+                    break;
+                default:
+                    promise = doWhenReadIsIdle(httpGet);
+            }
+
+            promise.then(function (resolved) {
+                updateCache(resolved);
+            });
+
+            return promise;
         },
 
         /**
@@ -30,7 +42,8 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
 
     return service;
 
-    // private functions  -START-
+
+    // ---------- PRIVATE FUNCTIONS----START---
 
     function isPromiseDefault() {
         return service.promise !== EMPTY_PROMISE;
@@ -40,32 +53,25 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
         return service.promise.then !== undefined;
     }
 
-    // TODO: use later for overloaded API
-    function httpQuery(params) {
-        var promise = $http.get(RESORUCE_URL,
-            {
-                params : params
-            });
-        promise.then(function (resolved) {
-            updateCache(resolved);
-        });
-        return promise;
+    /**
+     *
+     * @param query
+     * @returns {HttpPromise}
+     */
+    function httpGetQuery(query) {
+        return $http.get(RESORUCE_URL, {params: query});
     }
 
     /**
      * @returns {HttpPromise}
      */
     function httpGet() {
-        var promise = $http.get(RESORUCE_URL);
-        promise.then(function (resolved) {
-            updateCache(resolved);
-        });
-        return promise;
+        return $http.get(RESORUCE_URL);
     }
 
-    function httpGetWhenIdle() {
+    function doWhenReadIsIdle(getterMethod) {
         if (!isPromiseInProgress()) {
-            service.promise = httpGet();
+            service.promise = getterMethod.call();
         }
         return service.promise;
     }
@@ -74,6 +80,6 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
         service.cache = resolvedPromise.data;
     }
 
-    // private functions  -END-
+    // ---------- PRIVATE FUNCTIONS----END---
 }]);
    

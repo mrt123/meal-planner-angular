@@ -20,4 +20,8 @@ mealModule.controller('MealCtrl', [
             $scope.foods = promise.data;  // used by options for food selection.
         });
 
+        foodDataService.fetchData({query1: '123'})
+            .then(function (promise) {
+                $scope.foods = promise.data;  // used by options for food selection.
+            });
     }]);
