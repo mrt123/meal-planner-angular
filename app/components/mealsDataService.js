@@ -69,9 +69,14 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
         return $http.get(RESOURCE_URL);
     }
 
-    function whenNotReading(getterMethod) {
+    /**
+     * Will perform readMethod only if there is no unfinished reads on the same endpoint.
+     * @param readMethod
+     * @returns {*}
+     */
+    function whenNotReading(readMethod) {
         if (!isReading()) {
-            service.promise = getterMethod.call();
+            service.promise = readMethod.call();
         }
         return service.promise;
     }
