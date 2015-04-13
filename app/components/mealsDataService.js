@@ -5,7 +5,7 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
     // CONSTANTS
     var EMPTY_PROMISE = {data: []};
     var CACHE_DEFAULT = [];
-    var RESORUCE_URL = '../test/foods.json';
+    var RESOURCE_URL = '../test/foods.json';
 
     var service = {
         cache: CACHE_DEFAULT,
@@ -19,10 +19,10 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
 
             switch(query !== undefined) {
                 case true:
-                    promise = doWhenReadIsIdle(httpGetQuery(query));
+                    promise = whenNotReading(httpGetQuery(query));
                     break;
                 default:
-                    promise = doWhenReadIsIdle(httpGet);
+                    promise = whenNotReading(httpGet);
             }
 
             promise.then(function (resolved) {
@@ -49,7 +49,7 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
         return service.promise !== EMPTY_PROMISE;
     }
 
-    function isPromiseInProgress() {
+    function isReading() {
         return service.promise.then !== undefined;
     }
 
@@ -59,18 +59,18 @@ foodDataServiceModule.factory('mealsDataService', ['$http', '$q', function ($htt
      * @returns {HttpPromise}
      */
     function httpGetQuery(query) {
-        return $http.get(RESORUCE_URL, {params: query});
+        return $http.get(RESOURCE_URL, {params: query});
     }
 
     /**
      * @returns {HttpPromise}
      */
     function httpGet() {
-        return $http.get(RESORUCE_URL);
+        return $http.get(RESOURCE_URL);
     }
 
-    function doWhenReadIsIdle(getterMethod) {
-        if (!isPromiseInProgress()) {
+    function whenNotReading(getterMethod) {
+        if (!isReading()) {
             service.promise = getterMethod.call();
         }
         return service.promise;
